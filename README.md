@@ -1,4 +1,9 @@
-🎯 Requisitos
+📍 Contexto
+Este projeto é uma API Rest construída com Spring Boot, com o objetivo de garantir a qualidade da aplicação por meio de testes automatizados. O desafio consiste em criar testes para as camadas do sistema (Service, Repository, Controller) e alcançar uma cobertura de teste de 50%, garantindo que o código esteja livre de bugs e pronto para entrega ao cliente.
+
+Você pode usar o repositório estoque como base caso não tenha uma aplicação própria.
+
+🎯 Objetivos
 Construir testes para as camadas do sistema:
 
 Service
@@ -7,17 +12,10 @@ Repository
 
 Controller
 
-Garantir uma cobertura de testes de 50%, conforme a análise do IntelliJ IDEA.
-
-Estrutura de Testes
-Testes Unitários: Focados nas classes de Service e Repository. Testam métodos e funcionalidades isoladas.
-
-Testes de Integração: Focados em validar a integração entre camadas (Service e Repository).
-
-Testes de Controller: Validam as interações com as APIs, simulando requisições HTTP.
+Garantir uma cobertura de testes de 50% utilizando a ferramenta de cobertura do IntelliJ IDEA.
 
 🛠 Tecnologias e Conceitos Esperados
-Este projeto foi desenvolvido utilizando as seguintes tecnologias:
+Para resolver este desafio, são utilizadas as seguintes tecnologias e frameworks:
 
 Spring Boot: Framework para construção de APIs REST.
 
@@ -25,8 +23,10 @@ JUnit 5: Framework para testes unitários.
 
 Mockito: Framework para criação de mocks e stubs nos testes.
 
-Spring Data JPA: Para acesso e manipulação de dados no banco de dados.
+Spring Data JPA: Para integração com o banco de dados.
 
-H2 Database: Banco de dados em memória utilizado para testes.
+H2 Database: Banco de dados em memória para testes.
 
-Spring Boot Starter Test: Dependência para realizar testes no Spring Boot
+Spring Boot Starter Test: Dependência que inclui as bibliotecas necessárias para testes no Spring Boot.
+
+Jacoco: Para monitorar a cobertura de testes.
