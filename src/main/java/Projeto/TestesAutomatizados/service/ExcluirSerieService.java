@@ -13,7 +13,7 @@ public class ExcluirSerieService {
     private final SeriesRepository repository;
 
     @Autowired
-    public ExcluirSerieService(SeriesRepository repository) {
+    public ExcluirSerieService(SeriesRepository repository, BuscarSeriesService buscarSeriesService) {
         this.repository = repository;
     }
 
