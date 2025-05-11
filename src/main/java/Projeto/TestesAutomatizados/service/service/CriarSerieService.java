@@ -1,8 +1,8 @@
-package Projeto.TestesAutomatizados.service;
+package Projeto.TestesAutomatizados.service.service;
 
 import org.springframework.stereotype.Service;
-import Projeto.TestesAutomatizados.model.Serie;
-import Projeto.TestesAutomatizados.repository.SeriesRepository;
+import Projeto.TestesAutomatizados.service.model.Serie;
+import Projeto.TestesAutomatizados.service.repository.SeriesRepository;
 
 @Service
 public class CriarSerieService {

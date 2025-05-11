@@ -1,18 +1,18 @@
-package Projeto.TestesAutomatizados.controller;
+package Projeto.TestesAutomatizados.service.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import Projeto.TestesAutomatizados.dto.CriarSerieRequestDTO;
-import Projeto.TestesAutomatizados.dto.AtualizarSerieDTO;
-import Projeto.TestesAutomatizados.dto.SerieDTO;
-import Projeto.TestesAutomatizados.dto.mapper.CriarSerieRequestMapper;
-import Projeto.TestesAutomatizados.model.Serie;
-import Projeto.TestesAutomatizados.service.AtualizarSerieService;
-import Projeto.TestesAutomatizados.service.BuscarSeriesService;
-import Projeto.TestesAutomatizados.service.CriarSerieService;
-import Projeto.TestesAutomatizados.service.ExcluirSerieService;
+import Projeto.TestesAutomatizados.service.dto.CriarSerieRequestDTO;
+import Projeto.TestesAutomatizados.service.dto.AtualizarSerieDTO;
+import Projeto.TestesAutomatizados.service.dto.SerieDTO;
+import Projeto.TestesAutomatizados.service.dto.mapper.CriarSerieRequestMapper;
+import Projeto.TestesAutomatizados.service.model.Serie;
+import Projeto.TestesAutomatizados.service.service.AtualizarSerieService;
+import Projeto.TestesAutomatizados.service.service.BuscarSeriesService;
+import Projeto.TestesAutomatizados.service.service.CriarSerieService;
+import Projeto.TestesAutomatizados.service.service.ExcluirSerieService;
 
 import java.util.List;
 

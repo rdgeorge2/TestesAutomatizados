@@ -1,12 +1,11 @@
-package Projeto.TestesAutomatizados;
+package Projeto.TestesAutomatizados.service;
 
-import Projeto.TestesAutomatizados.dto.AtualizarSerieDTO;
-import Projeto.TestesAutomatizados.model.Serie;
-import Projeto.TestesAutomatizados.repository.SeriesRepository;
-import Projeto.TestesAutomatizados.service.AtualizarSerieService;
+import Projeto.TestesAutomatizados.service.dto.AtualizarSerieDTO;
+import Projeto.TestesAutomatizados.service.model.Serie;
+import Projeto.TestesAutomatizados.service.repository.SeriesRepository;
+import Projeto.TestesAutomatizados.service.service.AtualizarSerieService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.Optional;
 

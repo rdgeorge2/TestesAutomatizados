@@ -1,9 +1,9 @@
-package Projeto.TestesAutomatizados.config;
+package Projeto.TestesAutomatizados.service.config;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import Projeto.TestesAutomatizados.exception.SerieNaoEncontradaException;
+import Projeto.TestesAutomatizados.service.exception.SerieNaoEncontradaException;
 
 @ControllerAdvice
 public class ControllerAdviceRest {

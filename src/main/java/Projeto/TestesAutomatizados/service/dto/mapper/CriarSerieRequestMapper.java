@@ -1,7 +1,7 @@
-package Projeto.TestesAutomatizados.dto.mapper;
+package Projeto.TestesAutomatizados.service.dto.mapper;
 
-import Projeto.TestesAutomatizados.dto.CriarSerieRequestDTO;
-import Projeto.TestesAutomatizados.model.Serie;
+import Projeto.TestesAutomatizados.service.dto.CriarSerieRequestDTO;
+import Projeto.TestesAutomatizados.service.model.Serie;
 
 public class CriarSerieRequestMapper {
 

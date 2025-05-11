@@ -1,4 +1,4 @@
-package Projeto.TestesAutomatizados.model;
+package Projeto.TestesAutomatizados.service.model;
 
 import jakarta.persistence.*;
 

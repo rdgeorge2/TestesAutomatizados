@@ -1,9 +1,9 @@
-package Projeto.TestesAutomatizados;
+package Projeto.TestesAutomatizados.service;
 
-import Projeto.TestesAutomatizados.exception.SerieNaoEncontradaException;
-import Projeto.TestesAutomatizados.repository.SeriesRepository;
-import Projeto.TestesAutomatizados.service.BuscarSeriesService;
-import Projeto.TestesAutomatizados.service.ExcluirSerieService;
+import Projeto.TestesAutomatizados.service.exception.SerieNaoEncontradaException;
+import Projeto.TestesAutomatizados.service.repository.SeriesRepository;
+import Projeto.TestesAutomatizados.service.service.BuscarSeriesService;
+import Projeto.TestesAutomatizados.service.service.ExcluirSerieService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

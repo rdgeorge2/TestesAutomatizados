@@ -1,10 +1,10 @@
-package Projeto.TestesAutomatizados;
+package Projeto.TestesAutomatizados.service;
 
-import Projeto.TestesAutomatizados.dto.SerieDTO;
-import Projeto.TestesAutomatizados.exception.SerieNaoEncontradaException;
-import Projeto.TestesAutomatizados.model.Serie;
-import Projeto.TestesAutomatizados.repository.SeriesRepository;
-import Projeto.TestesAutomatizados.service.BuscarSeriesService;
+import Projeto.TestesAutomatizados.service.dto.SerieDTO;
+import Projeto.TestesAutomatizados.service.exception.SerieNaoEncontradaException;
+import Projeto.TestesAutomatizados.service.model.Serie;
+import Projeto.TestesAutomatizados.service.repository.SeriesRepository;
+import Projeto.TestesAutomatizados.service.service.BuscarSeriesService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package Projeto.TestesAutomatizados.dto;
+package Projeto.TestesAutomatizados.service.dto;
 
 import jakarta.validation.constraints.*;
 

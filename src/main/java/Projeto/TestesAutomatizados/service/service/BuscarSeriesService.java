@@ -1,11 +1,11 @@
-package Projeto.TestesAutomatizados.service;
+package Projeto.TestesAutomatizados.service.service;
 
 import org.springframework.stereotype.Service;
-import Projeto.TestesAutomatizados.dto.SerieDTO;
-import Projeto.TestesAutomatizados.dto.mapper.SerieMapper;
-import Projeto.TestesAutomatizados.exception.SerieNaoEncontradaException;
-import Projeto.TestesAutomatizados.model.Serie;
-import Projeto.TestesAutomatizados.repository.SeriesRepository;
+import Projeto.TestesAutomatizados.service.dto.SerieDTO;
+import Projeto.TestesAutomatizados.service.dto.mapper.SerieMapper;
+import Projeto.TestesAutomatizados.service.exception.SerieNaoEncontradaException;
+import Projeto.TestesAutomatizados.service.model.Serie;
+import Projeto.TestesAutomatizados.service.repository.SeriesRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
