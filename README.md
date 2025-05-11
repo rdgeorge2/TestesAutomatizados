@@ -40,5 +40,5 @@ Para resolver este desafio, são utilizadas as seguintes tecnologias e framework
 Clone o repositório em sua máquina local:
 
 ```bash
-git clone https://github.com/rdgeorge2/TestesAutomatizados.git
-cd TestesAutomatizados
+git clone https://github.com/rdgeorge2/TestesAutomatizados1.git
+cd TestesAutomatizados1
