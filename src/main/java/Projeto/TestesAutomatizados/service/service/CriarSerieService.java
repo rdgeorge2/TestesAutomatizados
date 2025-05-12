@@ -14,6 +14,15 @@ public class CriarSerieService {
     }
 
     public Serie criarSerie(Serie serie) {
+        if (serie == null) {
+            throw new IllegalArgumentException("A série não pode ser nula");
+        }
+
+        if (serie.getTitulo() == null || serie.getTitulo().isEmpty()) {
+            throw new IllegalArgumentException("O título da série não pode ser vazio");
+        }
+
         return repository.save(serie);
     }
 }
+

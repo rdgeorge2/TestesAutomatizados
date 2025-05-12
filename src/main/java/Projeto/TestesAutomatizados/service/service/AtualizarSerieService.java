@@ -1,10 +1,11 @@
 package Projeto.TestesAutomatizados.service.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import Projeto.TestesAutomatizados.service.dto.AtualizarSerieDTO;
 import Projeto.TestesAutomatizados.service.model.Serie;
 import Projeto.TestesAutomatizados.service.repository.SeriesRepository;
+import Projeto.TestesAutomatizados.service.exception.SerieNaoEncontradaException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AtualizarSerieService {
@@ -17,10 +18,13 @@ public class AtualizarSerieService {
     }
 
     public Serie atualizar(Long id, AtualizarSerieDTO dto) {
-        return repository.findById(id).map(serie -> {
-            if (dto.getTitulo() != null) {
-                serie.setTitulo(dto.getTitulo());
-            }
+
+        if (dto.getTitulo() == null || dto.getTitulo().isEmpty()) {
+            throw new IllegalArgumentException("O título da série não pode ser vazio");
+        }
+
+           return repository.findById(id).map(serie -> {
+             serie.setTitulo(dto.getTitulo());
             if (dto.getGenero() != null) {
                 serie.setGenero(dto.getGenero());
             }
@@ -30,7 +34,8 @@ public class AtualizarSerieService {
             if (dto.getAnoLancamento() != null) {
                 serie.setAnoLancamento(dto.getAnoLancamento());
             }
+
             return repository.save(serie);
-        }).orElseThrow(() -> new RuntimeException("Série com ID " + id + " não encontrada."));
+        }).orElseThrow(() -> new SerieNaoEncontradaException("Série com ID " + id + " não encontrada."));
     }
 }

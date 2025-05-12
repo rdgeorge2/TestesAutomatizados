@@ -1,56 +1,90 @@
 package Projeto.TestesAutomatizados.service;
 
 import Projeto.TestesAutomatizados.service.exception.SerieNaoEncontradaException;
+import Projeto.TestesAutomatizados.service.model.Serie;
 import Projeto.TestesAutomatizados.service.repository.SeriesRepository;
-import Projeto.TestesAutomatizados.service.service.BuscarSeriesService;
 import Projeto.TestesAutomatizados.service.service.ExcluirSerieService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 public class ExcluirSerieServiceTest {
 
-    ExcluirSerieService excluirSerieService;
-    SeriesRepository repository;
-    BuscarSeriesService buscarSeriesService;
+    private ExcluirSerieService excluirSerieService;
+    private SeriesRepository repository;
 
     @BeforeEach
     void setUp() {
-        repository = Mockito.mock(SeriesRepository.class);
-        buscarSeriesService = Mockito.mock(BuscarSeriesService.class);
-        excluirSerieService = new ExcluirSerieService(repository, buscarSeriesService);
+        repository = mock(SeriesRepository.class);
+        excluirSerieService = new ExcluirSerieService(repository);
     }
 
-    @DisplayName("Deve encontrar a série no banco de dados e excluí-la")
+    @DisplayName("Deve excluir série quando encontrada no banco de dados")
     @Test
     void deveExcluirSerieQuandoEncontrada() {
         Long id = 1L;
+        Serie serie = new Serie();
+        serie.setId(id);
+
+        when(repository.findById(id)).thenReturn(java.util.Optional.of(serie));
 
         excluirSerieService.excluir(id);
 
-        Mockito.verify(buscarSeriesService, Mockito.times(1)).buscarSeriePorId(id);
-        Mockito.verify(repository, Mockito.times(1)).deleteById(id);
-
-        InOrder inOrder = Mockito.inOrder(buscarSeriesService, repository);
-        inOrder.verify(buscarSeriesService).buscarSeriePorId(id);
-        inOrder.verify(repository).deleteById(id);
+        verify(repository, times(1)).delete(serie);
     }
 
-    @DisplayName("Deve lançar exceção ao não encontrar a série")
+    @DisplayName("Deve lançar exceção quando a série não for encontrada")
     @Test
     void deveLancarExcecaoQuandoSerieNaoEncontrada() {
         Long id = 1L;
 
-        Mockito.doThrow(new SerieNaoEncontradaException("Série com ID " + id + " não encontrada"))
-                .when(buscarSeriesService).buscarSeriePorId(id);
+        when(repository.findById(id)).thenReturn(java.util.Optional.empty());
 
-        SerieNaoEncontradaException exception = Assertions.assertThrows(SerieNaoEncontradaException.class,
+        SerieNaoEncontradaException exception = assertThrows(SerieNaoEncontradaException.class,
                 () -> excluirSerieService.excluir(id));
 
-        Assertions.assertNotNull(exception);
-        Assertions.assertEquals("Série com ID 1 não encontrada", exception.getMessage());
+        assertEquals("Série com ID 1 não encontrada.", exception.getMessage());
+    }
+
+    @DisplayName("Não deve chamar delete quando a série não for encontrada")
+    @Test
+    void naoDeveChamarDeleteQuandoBuscaFalhar() {
+        Long id = 1L;
+
+        when(repository.findById(id)).thenReturn(java.util.Optional.empty());
+
+        assertThrows(SerieNaoEncontradaException.class, () -> excluirSerieService.excluir(id));
+
+        verify(repository, times(0)).delete(any());
+    }
+
+    @DisplayName("Deve lançar exceção quando o ID for nulo")
+    @Test
+    void deveLancarExcecaoQuandoIdForNulo() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> excluirSerieService.excluir(null));
+
+        assertEquals("ID não pode ser nulo", exception.getMessage());
+    }
+
+    @DisplayName("Deve chamar o método delete na ordem correta quando a série for encontrada")
+    @Test
+    void deveChamarDeleteNaOrdemCorretaQuandoSerieEncontrada() {
+        Long id = 1L;
+        Serie serie = new Serie();
+        serie.setId(id);
+
+        when(repository.findById(id)).thenReturn(java.util.Optional.of(serie));
+
+        excluirSerieService.excluir(id);
+
+        InOrder inOrder = inOrder(repository);
+        inOrder.verify(repository).findById(id);
+        inOrder.verify(repository).delete(serie);
     }
 }

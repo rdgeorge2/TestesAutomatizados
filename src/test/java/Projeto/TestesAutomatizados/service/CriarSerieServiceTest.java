@@ -38,6 +38,29 @@ public class CriarSerieServiceTest {
         Mockito.verify(repository, Mockito.times(1)).save(serieValida);
     }
 
+    @DisplayName("Dado uma série nula, deve lançar exceção ao tentar criar")
+    @Test
+    void deveLancarExcecaoQuandoSerieForNula() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            service.criarSerie(null);
+        });
+
+        Mockito.verify(repository, Mockito.never()).save(Mockito.any());
+    }
+
+    @DisplayName("Dado uma série sem título, deve lançar exceção ao tentar criar")
+    @Test
+    void deveLancarExcecaoQuandoTituloForVazio() {
+        Serie serieSemTitulo = umaSerie();
+        serieSemTitulo.setTitulo("");
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            service.criarSerie(serieSemTitulo);
+        });
+
+        Mockito.verify(repository, Mockito.never()).save(Mockito.any());
+    }
+
     private Serie umaSerie() {
         Serie serie = new Serie();
         serie.setTitulo("Breaking Bad");
