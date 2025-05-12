@@ -40,7 +40,7 @@ class BuscarSeriesServiceTest {
 
     @Test
     void deveLancarExcecaoQuandoSerieNaoEncontrada() {
-        Long id = 999L;
+        Long id = 500L;
         when(repository.findById(id)).thenReturn(Optional.empty());
         SerieNaoEncontradaException exception = assertThrows(
                 SerieNaoEncontradaException.class, () -> service.buscarSeriePorId(id));
