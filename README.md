@@ -1,43 +1,44 @@
-# Desafio: Melhorando a Qualidade dos Projetos
+# 🚀 Desafio: Melhorando a Qualidade dos Projetos
 
 ## 📍 Contexto
 
-Este projeto é uma API Rest construída com **Spring Boot**, com o objetivo de garantir a qualidade da aplicação por meio de testes automatizados. O desafio consiste em criar testes para as camadas do sistema (**Service**, **Repository**, **Controller**) e alcançar uma cobertura de teste de 50%, garantindo que o código esteja livre de bugs e pronto para entrega ao cliente.
+Este projeto é uma **API REST** desenvolvida com **Spring Boot**, com foco na garantia da qualidade do software por meio de **testes automatizados**.
 
-Este repositório é parte do desafio para a melhoria da qualidade de código através de testes automatizados.
+O principal objetivo é criar testes para as camadas da aplicação (**Service**, **Repository** e **Controller**) e alcançar **pelo menos 50% de cobertura de testes**, assegurando que o código esteja livre de bugs e pronto para entrega ao cliente.
+
+Este repositório faz parte de um desafio voltado à melhoria da qualidade de código por meio de boas práticas de testes.
 
 ---
 
 ## 🎯 Objetivos
 
-1. **Construir testes para as camadas do sistema**:
-   - **Service**
-   - **Repository**
-   - **Controller**
-
-2. **Garantir uma cobertura de testes de 50%** utilizando a ferramenta de cobertura do IntelliJ IDEA.
-
----
-
-## 🛠 Tecnologias e Conceitos Esperados
-
-Para resolver este desafio, são utilizadas as seguintes tecnologias e frameworks:
-
-- **Spring Boot**: Framework para construção de APIs REST.
-- **JUnit 5**: Framework para testes unitários.
-- **Mockito**: Framework para criação de mocks e stubs nos testes.
-- **Spring Data JPA**: Para integração com o banco de dados.
-- **H2 Database**: Banco de dados em memória para testes.
-- **Spring Boot Starter Test**: Dependência que inclui as bibliotecas necessárias para testes no Spring Boot.
-- **Jacoco**: Para monitorar a cobertura de testes.
+- ✅ Desenvolver testes automatizados para as camadas:
+   - `Service`
+   - `Repository`
+   - `Controller`
+- ✅ Alcançar no mínimo **50% de cobertura de testes**, utilizando a ferramenta de cobertura do IntelliJ IDEA.
 
 ---
 
-## 🔧 Como Rodar o Projeto
+## 🛠 Tecnologias e Ferramentas
 
-### 1. Clonando o Repositório
+As tecnologias utilizadas neste desafio incluem:
 
-Clone o repositório em sua máquina local:
+- **Spring Boot** – Framework para construção de APIs REST.
+- **JUnit 5** – Framework para testes unitários.
+- **Mockito** – Biblioteca para criação de mocks e simulações.
+- **Spring Data JPA** – Integração com banco de dados via JPA.
+- **H2 Database** – Banco de dados em memória, ideal para testes.
+- **Spring Boot Starter Test** – Pacote com as principais dependências para testes no Spring.
+- **Jacoco** – Ferramenta de análise de cobertura de testes.
+
+---
+
+## 🔧 Como Executar o Projeto
+
+### 1. Clonar o Repositório
+
+Clone o repositório em sua máquina local com o seguinte comando:
 
 ```bash
 git clone https://github.com/rdgeorge2/TestesAutomatizados1.git

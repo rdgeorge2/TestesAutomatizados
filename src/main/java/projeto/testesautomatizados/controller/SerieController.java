@@ -46,9 +46,9 @@ public class SerieController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+    public ResponseEntity<String> excluir(@PathVariable Long id) {
         excluirSerieService.excluir(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("Série com ID " + id + " foi excluída com sucesso.");
     }
 
     @GetMapping
