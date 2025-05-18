@@ -4,11 +4,12 @@ import projeto.testesautomatizados.dto.AtualizarSerieDTO;
 import projeto.testesautomatizados.exception.SerieNaoEncontradaException;
 import projeto.testesautomatizados.model.Serie;
 import projeto.testesautomatizados.repository.SeriesRepository;
-import projeto.testesautomatizados.service.AtualizarSerieService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,6 +44,8 @@ public class AtualizarSerieServiceTest {
         AtualizarSerieDTO dto = new AtualizarSerieDTO();
         dto.setTitulo("Novo Título");
 
+        Mockito.when(repository.findById(id)).thenReturn(Optional.empty());
+
         SerieNaoEncontradaException exception = assertThrows(SerieNaoEncontradaException.class,
                 () -> atualizarSerieService.atualizar(id, dto));
 
@@ -60,12 +63,40 @@ public class AtualizarSerieServiceTest {
         AtualizarSerieDTO dto = new AtualizarSerieDTO();
         dto.setTitulo("Título Atualizado");
 
-        Mockito.when(repository.findById(id)).thenReturn(java.util.Optional.of(serieExistente));
+        Mockito.when(repository.findById(id)).thenReturn(Optional.of(serieExistente));
         Mockito.when(repository.save(serieExistente)).thenReturn(serieExistente);
 
         Serie resultado = atualizarSerieService.atualizar(id, dto);
 
         assertNotNull(resultado);
         assertEquals("Título Atualizado", resultado.getTitulo());
+    }
+
+    @DisplayName("Deve atualizar todos os campos da série corretamente")
+    @Test
+    void deveAtualizarTodosOsCamposDaSerie() {
+        Long id = 3L;
+        Serie serieExistente = new Serie();
+        serieExistente.setId(id);
+        serieExistente.setTitulo("Série Antiga");
+        serieExistente.setGenero("Ação");
+        serieExistente.setTemporadas(2);
+        serieExistente.setAnoLancamento(2010);
+        serieExistente.setCriador("Criador Antigo");
+
+        AtualizarSerieDTO dto = new AtualizarSerieDTO(
+                "Série Atualizada", "Drama", 4, 2020, "Novo Criador");
+
+        Mockito.when(repository.findById(id)).thenReturn(Optional.of(serieExistente));
+        Mockito.when(repository.save(Mockito.any(Serie.class))).thenReturn(serieExistente);
+
+        Serie resultado = atualizarSerieService.atualizar(id, dto);
+
+        assertNotNull(resultado);
+        assertEquals("Série Atualizada", resultado.getTitulo());
+        assertEquals("Drama", resultado.getGenero());
+        assertEquals(4, resultado.getTemporadas());
+        assertEquals(2020, resultado.getAnoLancamento());
+        assertEquals("Novo Criador", resultado.getCriador());
     }
 }

@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import projeto.testesautomatizados.dto.CriarSerieRequestDTO;
-import projeto.testesautomatizados.dto.AtualizarSerieDTO;
 import projeto.testesautomatizados.dto.SerieDTO;
+import projeto.testesautomatizados.dto.AtualizarSerieDTO;
 import projeto.testesautomatizados.dto.mapper.CriarSerieRequestMapper;
 import projeto.testesautomatizados.model.Serie;
 import projeto.testesautomatizados.service.AtualizarSerieService;
@@ -18,7 +18,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/series")
-
 public class SerieController {
 
     private final CriarSerieService criarSerieService;
@@ -57,8 +56,7 @@ public class SerieController {
     }
 
     @GetMapping("/{id}")
-    public Serie buscarSeriePorId(@PathVariable (value = "id") Long id) {
+    public Serie buscarSeriePorId(@PathVariable(value = "id") Long id) {
         return buscarSeriesService.buscarSeriePorId(id);
     }
-
 }

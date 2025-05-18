@@ -6,16 +6,17 @@ public class SerieDTO {
     private String genero;
     private int temporadas;
     private int anoLancamento;
+    private String criador;
 
     public SerieDTO() {
-
     }
 
-    public SerieDTO(String titulo, String genero, int temporadas, int anoLancamento) {
+    public SerieDTO(String titulo, String genero, int temporadas, int anoLancamento, String criador) {
         this.titulo = titulo;
         this.genero = genero;
         this.temporadas = temporadas;
         this.anoLancamento = anoLancamento;
+        this.criador = criador;
     }
 
     public String getTitulo() {
@@ -48,5 +49,13 @@ public class SerieDTO {
 
     public void setAnoLancamento(int anoLancamento) {
         this.anoLancamento = anoLancamento;
+    }
+
+    public String getCriador() {
+        return criador;
+    }
+
+    public void setCriador(String criador) {
+        this.criador = criador;
     }
 }

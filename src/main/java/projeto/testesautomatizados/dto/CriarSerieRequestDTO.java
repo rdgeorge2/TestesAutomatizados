@@ -1,37 +1,28 @@
 package projeto.testesautomatizados.dto;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 public class CriarSerieRequestDTO {
 
-    @NotBlank(message = "Título não pode ser vazio")
-    @Size(min = 2, message = "Título deve conter pelo menos 2 caracteres")
+    @NotNull(message = "O título não pode ser nulo")
+    @NotEmpty(message = "O título não pode estar vazio")
     private String titulo;
 
-    @NotBlank(message = "Gênero não pode ser vazio")
-    @Size(min = 3, message = "Gênero deve conter pelo menos 3 caracteres")
     private String genero;
+    private int temporadas;
+    private int anoLancamento;
+    private String criador;
 
-    @NotNull(message = "Número de temporadas não pode ser nulo")
-    @Min(value = 1, message = "A série deve ter pelo menos 1 temporada")
-    private Integer temporadas;
-
-    @NotNull(message = "Ano de lançamento não pode ser nulo")
-    @Min(value = 1900, message = "Ano de lançamento inválido")
-    @Max(value = 2100, message = "Ano de lançamento inválido")
-    private Integer anoLancamento;
-
-    public CriarSerieRequestDTO() {
-    }
-
-    public CriarSerieRequestDTO(String titulo, String genero, Integer temporadas, Integer anoLancamento) {
+     public CriarSerieRequestDTO(String titulo, String genero, int temporadas, int anoLancamento, String criador) {
         this.titulo = titulo;
         this.genero = genero;
         this.temporadas = temporadas;
         this.anoLancamento = anoLancamento;
+        this.criador = criador;
     }
 
-    public String getTitulo() {
+       public String getTitulo() {
         return titulo;
     }
 
@@ -47,19 +38,27 @@ public class CriarSerieRequestDTO {
         this.genero = genero;
     }
 
-    public Integer getTemporadas() {
+    public int getTemporadas() {
         return temporadas;
     }
 
-    public void setTemporadas(Integer temporadas) {
+    public void setTemporadas(int temporadas) {
         this.temporadas = temporadas;
     }
 
-    public Integer getAnoLancamento() {
+    public int getAnoLancamento() {
         return anoLancamento;
     }
 
-    public void setAnoLancamento(Integer anoLancamento) {
+    public void setAnoLancamento(int anoLancamento) {
         this.anoLancamento = anoLancamento;
+    }
+
+    public String getCriador() {
+        return criador;
+    }
+
+    public void setCriador(String criador) {
+        this.criador = criador;
     }
 }

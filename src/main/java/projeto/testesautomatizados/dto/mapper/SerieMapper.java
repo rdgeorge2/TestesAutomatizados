@@ -6,13 +6,12 @@ import projeto.testesautomatizados.model.Serie;
 public class SerieMapper {
 
     public static SerieDTO toSerieDTO(Serie serie) {
-        SerieDTO serieDTO = new SerieDTO(
-                serie.getTitulo(), serie.getGenero(),
-                serie.getTemporadas(), serie.getAnoLancamento()
+        return new SerieDTO(
+                serie.getTitulo(),
+                serie.getGenero(),
+                serie.getTemporadas(),
+                serie.getAnoLancamento(),
+                serie.getCriador()
         );
-
-        return serieDTO;
     }
 }
-
-

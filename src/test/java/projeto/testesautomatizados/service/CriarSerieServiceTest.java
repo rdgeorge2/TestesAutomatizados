@@ -2,7 +2,6 @@ package projeto.testesautomatizados.service;
 
 import projeto.testesautomatizados.model.Serie;
 import projeto.testesautomatizados.repository.SeriesRepository;
-import projeto.testesautomatizados.service.CriarSerieService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -61,12 +60,19 @@ public class CriarSerieServiceTest {
         Mockito.verify(repository, Mockito.never()).save(Mockito.any());
     }
 
+    @DisplayName("Dado uma série vazia (sem campos preenchidos), deve lançar exceção")
+    @Test
+    void deveLancarExcecaoQuandoSerieEstiverVazia() {
+        Serie serieVazia = new Serie();
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            service.criarSerie(serieVazia);
+        });
+
+        Mockito.verify(repository, Mockito.never()).save(Mockito.any());
+    }
+
     private Serie umaSerie() {
-        Serie serie = new Serie();
-        serie.setTitulo("Breaking Bad");
-        serie.setGenero("Drama");
-        serie.setTemporadas(5);
-        serie.setAnoLancamento(2008);
-        return serie;
+        return new Serie(null, "Breaking Bad", "Drama", 5, "Vince Gilligan");
     }
 }

@@ -18,13 +18,13 @@ public class AtualizarSerieService {
     }
 
     public Serie atualizar(Long id, AtualizarSerieDTO dto) {
-
         if (dto.getTitulo() == null || dto.getTitulo().isEmpty()) {
             throw new IllegalArgumentException("O título da série não pode ser vazio");
         }
 
-           return repository.findById(id).map(serie -> {
-             serie.setTitulo(dto.getTitulo());
+        return repository.findById(id).map(serie -> {
+            serie.setTitulo(dto.getTitulo());
+
             if (dto.getGenero() != null) {
                 serie.setGenero(dto.getGenero());
             }
@@ -33,6 +33,9 @@ public class AtualizarSerieService {
             }
             if (dto.getAnoLancamento() != null) {
                 serie.setAnoLancamento(dto.getAnoLancamento());
+            }
+            if (dto.getCriador() != null) {
+                serie.setCriador(dto.getCriador());
             }
 
             return repository.save(serie);
